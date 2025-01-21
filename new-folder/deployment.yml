@@ -30,5 +30,4 @@ spec:
     - protocol: TCP
       port: 80       # Port exposed by the service
       targetPort: 80  # Port in the NGINX container
-      nodePort: 30080 # NodePort to access the service externally
   type: NodePort      # Exposes the service externally on the Node's IP and port
