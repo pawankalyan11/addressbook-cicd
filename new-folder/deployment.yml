@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: argo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: argo
   template:
     metadata:
       labels:
-        app: nginx
+        app: argo
     spec:
       containers:
-        - name: nginx
+        - name: argo
           image: pawankalyan29/healthcare-project:v5
           ports:
             - containerPort: 80
@@ -22,10 +22,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: argo
 spec:
   selector:
-    app: nginx
+    app: argo
   ports:
     - protocol: TCP
       port: 80       # Port exposed by the service
