@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: argo
+  name: tomcat-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: argo
+      app: tomcat
   template:
     metadata:
       labels:
-        app: argo
+        app: tomcat
     spec:
       containers:
-        - name: argo
-          image: pawankalyan29/healthcare-project:v5
+        - name: tomcat
+          image: tomcat:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: argo
+  name: tomcat-service
 spec:
   selector:
-    app: argo
+    app: tomcat
   ports:
     - protocol: TCP
-      port: 80       # Port exposed by the service
-      targetPort: 80  # Port in the NGINX container
-  type: NodePort      # Exposes the service externally on the Node's IP and port
+      port: 80
+      targetPort: 8080
+  type: NodePort
